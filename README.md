@@ -5,6 +5,7 @@ Example Todo app using [Javalin](https://javalin.io)
 ## Usage
 
 ```
+$ sqlite3 todo.db < ddl.sql
 $ gradle run
 ```
 
