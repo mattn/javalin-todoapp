@@ -3,6 +3,9 @@ package io.github.mattn.todo.models;
 import java.util.Date;
 import lombok.Data;
 
+/**
+ * Item.
+ */
 @Data
 public class Item {
 	private int	id;

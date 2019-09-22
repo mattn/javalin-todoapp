@@ -12,7 +12,15 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Main.
+ */
 public class Main {
+	/**
+	 * Main function.
+	 * @param args arguments for program.
+	 * @throws Exception throws when something wrong.
+	 */
 	public static void main(String[] args) throws Exception {
 		SqlSessionFactory factory;
 		try (InputStream in = Main.class.getResourceAsStream("/mybatis-config.xml")) {
