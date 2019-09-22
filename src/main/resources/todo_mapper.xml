@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.mattn.todo">
+  <select id="select" resultType="io.github.mattn.todo.models.Item">
+    select * from items order by created_at desc
+  </select>
+  <insert id="insert" parameterType="io.github.mattn.todo.models.Item">
+    insert into items(body) values(#{body})
+  </insert>
+  <update id="update" parameterType="io.github.mattn.todo.models.Item">
+    update items set
+      body = #{body},
+      done = #{done},
+      updated_at = #{updatedAt}
+    where id = #{id}
+  </update>
+</mapper>
