@@ -1,7 +1,10 @@
-build
-*.db
-.classpath
-.project
-.settings
-.factorypath
-.gradle
+/build
+/*.db
+/.classpath
+/.project
+/.settings
+/.factorypath
+/.gradle
+/todo.iml
+/.idea/
+/bin/
