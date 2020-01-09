@@ -21,7 +21,7 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.10.0.pr1'
     compile 'org.mybatis:mybatis:3.3.0'
     compile 'org.xerial:sqlite-jdbc:3.28.0'
-    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.10.2'
     compile 'org.webjars.npm:vue:2.6.10'
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
