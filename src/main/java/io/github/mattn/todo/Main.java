@@ -4,6 +4,7 @@ import io.github.mattn.todo.models.Item;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import io.javalin.plugin.rendering.vue.VueComponent;
+import io.javalin.plugin.rendering.vue.JavalinVue;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -27,10 +28,10 @@ public class Main {
 			factory = new SqlSessionFactoryBuilder().build(in);
 		}
 
-		Javalin app = Javalin.create().start(7000);
-		app.config
-			.addStaticFiles("src/main/resources/public", Location.EXTERNAL)
-			.enableWebjars();
+		Javalin app = Javalin.create(config -> {
+            config.enableWebjars();
+        }).start(7000);
+
 		app.get("/api/todo", ctx -> {
 			ctx.res.setContentType("text/json");
 
@@ -47,7 +48,7 @@ public class Main {
 				ctx.status(201);
 			}
 		});
-		app.post("/api/todo/:id", ctx -> {
+		app.post("/api/todo/{id}", ctx -> {
 			Item item = ctx.bodyAsClass(Item.class);
 			item.setUpdatedAt(new Date());
 			try (SqlSession session = factory.openSession()) {
