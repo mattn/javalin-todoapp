@@ -1,6 +1,6 @@
 <template id="todo-overview">
   <div>
-    <form id="add-todo" @submit.prevent="add">
+    <form id="add-todo" @submit.prevent="addItem">
       <input v-model="newTodo"/>
       <button type="submit">Add</button>
     </form>
@@ -9,6 +9,7 @@
         <p v-bind:class="{ 'todo-done': todo.done }">
           <input type="checkbox" :checked="todo.done" @input="toggleDone(todo, $event)">
           {{todo.body}}
+          <button class="delete" @click="deleteItem(todo, $event)">Delete</button>
         </p>
       </li>
     </ul>
@@ -22,7 +23,7 @@
       todos: [],
     }),
     created() {
-      this.list();
+      this.listItems();
     },
     methods: {
       toggleDone(item) {
@@ -31,22 +32,30 @@
           method: 'POST',
           body: JSON.stringify(item)
         })
-          .then(res => this.list())
+          .then(res => this.listItems())
           .catch(() => alert("Error while fetching todos"));
       },
-      list(e) {
+      deleteItem(item) {
+        fetch("/api/todo/" + item.id, {
+          method: 'DELETE',
+          body: JSON.stringify(item)
+        })
+          .then(res => this.listItems())
+          .catch(() => alert("Error while deleting todos"));
+      },
+      listItems(e) {
         this.newTodo = '';
         fetch("/api/todo")
           .then(res => res.json())
           .then(res => this.todos = res)
           .catch(() => alert("Error while fetching todos"));
       },
-      add(e) {
+      addItem(e) {
         fetch("/api/todo", {
           method: 'POST',
           body: JSON.stringify({body: this.newTodo})
         })
-          .then(res => this.list())
+          .then(res => this.listItems())
           .catch(() => alert("Error while fetching todos"));
       }
     }
@@ -67,11 +76,14 @@
     list-style: none;
   }
   ul.todo-overview-list p {
-    display: block;
+    display: flex;
     padding: 16px;
     border-bottom: 1px solid #ddd;
   }
   ul.todo-overview-list p.todo-done {
     background-color: #ddd;
+  }
+  .delete {
+    margin-left: auto;
   }
 </style>

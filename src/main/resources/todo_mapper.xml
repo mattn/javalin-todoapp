@@ -16,4 +16,8 @@
       updated_at = #{updatedAt}
     where id = #{id}
   </update>
+  <delete id="delete" parameterType="int">
+    delete from items
+    where id = #{id}
+  </delete>
 </mapper>

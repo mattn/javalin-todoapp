@@ -56,6 +56,12 @@ public class Main {
 				session.commit();
 			}
 		});
+		app.delete("/api/todo/{id}", ctx -> {
+			try (SqlSession session = factory.openSession()) {
+				session.delete("io.github.mattn.todo.delete", Integer.parseInt(ctx.pathParam("id")));
+				session.commit();
+			}
+		});
 		app.get("/", new VueComponent("<todo-overview></todo-overview>"));
 	}
 }
