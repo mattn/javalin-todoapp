@@ -37,6 +37,8 @@ public class Main {
             config.enableWebjars();
         }).start(7000);
 
+        JavalinVue.isDevFunction = ctx -> false;
+
         app.get("/api/todo", ctx -> {
             ctx.res.setContentType("text/json");
 
