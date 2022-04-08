@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javalin-todoapp
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: javalin-todoapp
+  template:
+    metadata:
+      labels:
+        app: javalin-todoapp
+    spec:
+      containers:
+      - image: mattn/javalin-todoapp:latest
+        name: javalin-todoapp
+        ports:
+        - containerPort: 7000

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: javalin-todoapp
+spec:
+  ports:
+  - port: 80
+    targetPort: 7000
+  selector:
+    app: javalin-todoapp
