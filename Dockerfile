@@ -1,6 +1,6 @@
 FROM gradle:4.7.0-jdk13-alpine AS build
 COPY --chown=gradle:gradle . /
-RUN gradle build --no-daemon 
+RUN ./gradlew build --no-daemon 
 
 FROM openjdk:13-jdk-alpine
 ADD build/libs/todo-*.jar app.jar
