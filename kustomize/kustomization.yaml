@@ -3,5 +3,5 @@ namePrefix: kustomize-
 resources:
 - javalin-todoapp-deployment.yaml
 - javalin-todoapp-svc.yaml
-apiVersion: kustomize.config.k8s.io/v1
+apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
