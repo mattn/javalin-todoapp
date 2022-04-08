@@ -11,4 +11,5 @@ FROM openjdk:13-jdk-alpine
 
 COPY --from=build --chown=app:app build/libs/todo-*.jar app.jar
 ENV JAVA_OPTS=""
+EXPOSE 7000
 ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar
