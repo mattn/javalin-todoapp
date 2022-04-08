@@ -20,4 +20,13 @@
     delete from items
     where id = #{id}
   </delete>
+  <update id="create">
+    create table if not exists items(
+      id integer primary key autoincrement,
+      body text not null,
+      done bool default false,
+      created_at datetime default (datetime('now', 'localtime')),
+      updated_at datetime default (datetime('now', 'localtime'))
+    );
+  </update>
 </mapper>
