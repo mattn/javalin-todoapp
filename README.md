@@ -2,21 +2,16 @@
 
 Example Todo app using [Javalin](https://javalin.io)
 
-## Usage
+## Standalone
 
 ```
-$ sqlite3 todo.db < ddl.sql
-$ gradle run
+$ ./gradlew run
 ```
 
-## Requirements
-
-* java
-
-## Installation
+## Deploy
 
 ```
-$ gradle jar
+$ docker-compose up -d --build
 ```
 
 ## License
