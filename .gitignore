@@ -8,3 +8,6 @@
 /todo.iml
 /.idea/
 /bin/
+/.vim-lsp-settings
+/tmp
+.ctrlpignore
