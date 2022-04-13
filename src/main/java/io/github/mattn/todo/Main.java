@@ -2,7 +2,6 @@ package io.github.mattn.todo;
 
 import io.github.mattn.todo.models.Item;
 import io.javalin.Javalin;
-import io.javalin.http.staticfiles.Location;
 import io.javalin.plugin.rendering.vue.VueComponent;
 import io.javalin.plugin.rendering.vue.JavalinVue;
 import org.apache.ibatis.session.SqlSession;
