@@ -1,4 +1,4 @@
-FROM openjdk:13-jdk-alpine as build
+FROM openjdk:11-jdk-oracle as build
 
 ADD --chown=gradle:gradle gradle gradle
 ADD --chown=gradle:gradle src src
@@ -7,7 +7,7 @@ ADD --chown=gradle:gradle settings.gradle .
 ADD --chown=gradle:gradle build.gradle .
 RUN ./gradlew build --no-daemon
 
-FROM openjdk:13-jdk-alpine
+FROM openjdk:11-jdk-oracle
 
 COPY --from=build --chown=app:app build/libs/todo-*.jar app.jar
 ENV JAVA_OPTS=""
