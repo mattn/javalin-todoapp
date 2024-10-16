@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  Vue.component("todo-overview", {
+  app.component("todo-overview", {
     template: "#todo-overview",
     data: () => ({
       newTodo: '',

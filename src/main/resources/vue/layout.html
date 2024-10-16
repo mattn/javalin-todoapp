@@ -2,7 +2,10 @@
     <head>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <script src="/webjars/vue/2.6.10/dist/vue.min.js"></script>
+        <script src="/webjars/vue/3.5.12/dist/vue.global.js"></script>
+        <script>
+            const app = Vue.createApp({});
+        </script>
         @componentRegistration
     </head>
     <body>
@@ -10,7 +13,7 @@
             @routeComponent
         </main>
         <script>
-            new Vue({el: "#main-vue"});
+            app.mount("#main-vue");
         </script>
     </body>
 </html>

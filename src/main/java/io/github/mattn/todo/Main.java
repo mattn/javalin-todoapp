@@ -2,8 +2,7 @@ package io.github.mattn.todo;
 
 import io.github.mattn.todo.models.Item;
 import io.javalin.Javalin;
-import io.javalin.plugin.rendering.vue.VueComponent;
-import io.javalin.plugin.rendering.vue.JavalinVue;
+import io.javalin.vue.VueComponent;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -33,13 +32,13 @@ public class Main {
         }
 
         Javalin app = Javalin.create(config -> {
-            config.enableWebjars();
+            config.staticFiles.enableWebjars();
+            config.vue.isDevFunction = ctx -> false;
+            config.vue.vueInstanceNameInJs = "app";
         }).start(7000);
 
-        JavalinVue.isDevFunction = ctx -> false;
-
         app.get("/api/todo", ctx -> {
-            ctx.res.setContentType("text/json");
+            ctx.res().setContentType("text/json");
 
             try (SqlSession session = factory.openSession()) {
                 List<Item> result = session.selectList("io.github.mattn.todo.select");
