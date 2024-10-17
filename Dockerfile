@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-oracle as build
+FROM openjdk:24-jdk-oracle as build
 
 ADD --chown=gradle:gradle gradle gradle
 ADD --chown=gradle:gradle src src
