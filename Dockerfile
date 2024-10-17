@@ -7,7 +7,7 @@ ADD --chown=gradle:gradle settings.gradle .
 ADD --chown=gradle:gradle build.gradle .
 RUN ./gradlew build --no-daemon
 
-FROM openjdk:11-jdk-oracle
+FROM openjdk:24-jdk-oracle as deploy
 
 COPY --from=build --chown=app:app build/libs/todo-*.jar app.jar
 ENV JAVA_OPTS=""
