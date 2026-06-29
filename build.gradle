@@ -20,15 +20,23 @@ dependencies {
     implementation 'org.xerial:sqlite-jdbc:3.46.1.3'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.18.+'
     implementation 'org.webjars.npm:vue:3.5.12'
-    compileOnly 'org.projectlombok:lombok:1.18.34'
-    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    compileOnly 'org.projectlombok:lombok:1.18.40'
+    annotationProcessor 'org.projectlombok:lombok:1.18.40'
 }
 
 group = 'io.github.mattn.todo'
 version = '1.0.0'
 description = 'Todo App'
-sourceCompatibility = '1.8'
-mainClassName = 'io.github.mattn.todo.Main'
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+application {
+    mainClass = 'io.github.mattn.todo.Main'
+}
+
+def mainClassName = 'io.github.mattn.todo.Main'
 
 publishing {
     publications {
